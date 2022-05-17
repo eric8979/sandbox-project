@@ -1,24 +1,31 @@
-import { Link, Outlet } from "react-router-dom";
-import "./App.css";
+// components
+import { Outlet, useLocation } from "react-router-dom";
+import Bottombar from "./components/Bottombar";
+import Topbar from "./components/Topbar";
 
 function App() {
+  let location = useLocation();
+
+  const renderByLocation = () => {
+    if (location.pathname != "/") {
+      return <Outlet />;
+    }
+    return (
+      <div>
+        <h1>Notification</h1>
+
+        <p>temporal use when first logged in</p>
+        <p>If user wants to use notifications after moving to another page</p>
+        <p>the notification will be in settings page</p>
+      </div>
+    );
+  };
+
   return (
-    <div className="App">
-      <h1>Welcome to weather-chatbot</h1>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/login">login</Link> | <Link to="/signup">signup</Link>
-        <br />
-        <Link to="/chatroom">Chatroom</Link> |{" "}
-        <Link to="/userroom">Userroom</Link>
-        <br />
-        <Link to="/settings">Settings</Link>
-      </nav>
-      <Outlet />
+    <div>
+      <Topbar />
+      {renderByLocation()}
+      <Bottombar />
     </div>
   );
 }

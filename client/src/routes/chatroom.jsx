@@ -1,6 +1,9 @@
+// styles
+import "../styles/chatroom.scss";
+
 function Chatroom() {
   return (
-    <div>
+    <div className="chatroom">
       <h1>Chatroom page</h1>
     </div>
   );
