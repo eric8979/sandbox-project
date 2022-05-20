@@ -1,5 +1,5 @@
-// components
 import { Outlet, useLocation } from "react-router-dom";
+// components
 import Bottombar from "./components/Bottombar";
 import Topbar from "./components/Topbar";
 
@@ -12,11 +12,7 @@ function App() {
     }
     return (
       <div>
-        <h1>Notification</h1>
-
-        <p>temporal use when first logged in</p>
-        <p>If user wants to use notifications after moving to another page</p>
-        <p>the notification will be in settings page</p>
+        <h1>chatroom</h1>
       </div>
     );
   };

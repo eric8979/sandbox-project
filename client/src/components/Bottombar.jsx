@@ -6,7 +6,7 @@ function Bottombar() {
   return (
     <div className="bottombar">
       <nav>
-        <NavLink to="/chatroom">Chatroom</NavLink> |{" "}
+        <NavLink to="/">Chatroom</NavLink> |{" "}
         <NavLink to="/userroom">Userroom</NavLink>
       </nav>
     </div>

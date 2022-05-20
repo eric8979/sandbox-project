@@ -5,7 +5,7 @@ import "../styles/bar.scss";
 function Topbar() {
   return (
     <div className="topbar">
-      <Link to="/chatroom">LOGO</Link>
+      <Link to="/">LOGO</Link>
       <div>Search Bar</div>
       <Link to="/settings">Settings</Link>
     </div>

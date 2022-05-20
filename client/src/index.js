@@ -6,7 +6,6 @@ import App from "./App";
 // routes
 import Signup from "./routes/signup";
 import Login from "./routes/login";
-import Chatroom from "./routes/chatroom";
 import Userroom from "./routes/userroom";
 import Settings from "./routes/settings";
 
@@ -16,7 +15,6 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="/chatroom" element={<Chatroom />} />
         <Route path="/userroom" element={<Userroom />} />
         <Route path="/settings" element={<Settings />} />
       </Route>
