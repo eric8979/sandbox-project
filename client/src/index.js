@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 // routes
@@ -14,12 +14,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="/userroom" element={<Userroom />} />
-        <Route path="/settings" element={<Settings />} />
-      </Route>
+      // root route is for chatroom
+      <Route path="/" element={<App />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/userroom" element={<Userroom />} />
+      <Route path="/settings" element={<Settings />} />
     </Routes>
   </BrowserRouter>
 );
