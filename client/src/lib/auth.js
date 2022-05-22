@@ -1,11 +1,11 @@
 const axios = require("axios").default;
 
-export const handleLogin = (email, pwd) => {
-  console.log(email, pwd);
+export const handleLogin = (email, password) => {
+  console.log(email, password);
   axios
     .post("http://localhost:8000/api/login", {
       email,
-      pwd,
+      password,
     })
     .then(function (response) {
       console.log("login request sent");
