@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+// handles "exception" inside of async express routes
+// (Used for mongoDB error in this project)
 const asyncHandler = require("express-async-handler");
 
 // @desc Signup new user
@@ -29,7 +31,10 @@ const loginUser = asyncHandler(async (req, res) => {
   // Send response
 });
 
+const getSelf = asyncHandler(async (req, res) => {});
+
 module.exports = {
   signupUser,
   loginUser,
+  getSelf,
 };
