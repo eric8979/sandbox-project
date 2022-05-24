@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 // handles "exception" inside of async express routes
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
-const jwtGenerator = require("../config/jwt");
+const { jwtGenerator } = require("../config/jwt");
 
 // @desc Signup new user
 // @route POST /api/users
@@ -73,7 +73,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route GET /api/users/self
 // @access Private
 const getSelf = asyncHandler(async (req, res) => {
-  // Not figured out
+  // TODO
   res.status(200).json(req.user);
 });
 
