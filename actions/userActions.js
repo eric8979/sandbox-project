@@ -1,8 +1,8 @@
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 // handles "exception" inside of async express routes
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
+const jwtGenerator = require("../config/jwt");
 
 // @desc Signup new user
 // @route POST /api/users
@@ -39,7 +39,7 @@ const signupUser = asyncHandler(async (req, res) => {
       _id: user.id,
       username: user.username,
       email: user.email,
-      // TODO: Add token!
+      token: jwtGenerator(user._id),
     });
   } else {
     res.status(400);
@@ -61,7 +61,7 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: userInDB.id,
       username: userInDB.username,
       email: userInDB.email,
-      // TODO: Add Token!
+      token: jwtGenerator(userInDB._id),
     });
   } else {
     res.status(400);
@@ -72,7 +72,10 @@ const loginUser = asyncHandler(async (req, res) => {
 // @desc Get user(only self)
 // @route GET /api/users/self
 // @access Private
-const getSelf = asyncHandler(async (req, res) => {});
+const getSelf = asyncHandler(async (req, res) => {
+  // Not figured out
+  res.status(200).json(req.user);
+});
 
 module.exports = {
   signupUser,
