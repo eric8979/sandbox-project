@@ -14,8 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      // root route is for chatroom
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<App />} /> // App = chatroom
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/userroom" element={<Userroom />} />
