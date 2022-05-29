@@ -69,7 +69,20 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc Get user(only self)
+// @desc Get all users
+// @route GET /api/users/all
+// @access Public
+const getAllusers = asyncHandler(async (req, res) => {
+  const users = await User.find()
+    .select("-password")
+    .select("-updatedAt")
+    .select("-createdAt")
+    .select("-email");
+
+  res.status(200).json(users);
+});
+
+// @desc Get user
 // @route GET /api/users/self
 // @access Private
 const getSelf = asyncHandler(async (req, res) => {
@@ -79,5 +92,6 @@ const getSelf = asyncHandler(async (req, res) => {
 module.exports = {
   signupUser,
   loginUser,
+  getAllusers,
   getSelf,
 };

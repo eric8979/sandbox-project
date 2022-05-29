@@ -7,7 +7,7 @@ function Userroom() {
   return (
     <div>
       <Topbar />
-      <h1>Userroom page</h1>
+      <h1>User Room</h1>
       <div>
         <UserBox />
         <UserBox />
