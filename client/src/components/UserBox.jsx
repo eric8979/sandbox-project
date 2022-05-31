@@ -5,7 +5,7 @@ function UserBox({ user }) {
     <div className="userBox">
       <h1>{user.username}</h1>
       <p>user info</p>
-      <div>chat!</div>
+      <div>chat!(chatting functionality)</div>
     </div>
   );
 }
