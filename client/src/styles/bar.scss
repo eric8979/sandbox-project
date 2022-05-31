@@ -2,4 +2,21 @@
 .bottombar {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  font-size: 1.3rem;
+
+  a {
+    font-size: 2rem;
+  }
+
+  * {
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+.topbar {
+  margin-bottom: 0.5rem;
+}
+.bottombar {
+  margin-top: 0.5rem;
 }

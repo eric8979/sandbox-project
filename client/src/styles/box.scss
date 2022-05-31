@@ -1,0 +1,17 @@
+.userBox,
+.chatBox {
+  margin: 0.3rem 1rem;
+  border: 0.2rem black solid;
+  border-radius: 10px;
+}
+
+.userBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  * {
+    padding: 0.3rem 0.5rem;
+  }
+}

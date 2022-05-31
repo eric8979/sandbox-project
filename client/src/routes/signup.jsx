@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-// styles
-import "../styles/layout.scss";
 
 function Signup() {
   const handleSubmit = (e) => {

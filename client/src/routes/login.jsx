@@ -1,9 +1,7 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 // lib
-import { handleLogin } from "../lib/auth";
-// styles
-import { Link } from "react-router-dom";
-import "../styles/layout.scss";
+import { handleLogin } from "../service/auth";
 
 function Login() {
   const [email, setEmail] = useState("");
