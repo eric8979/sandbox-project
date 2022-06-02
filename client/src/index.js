@@ -14,15 +14,17 @@ import "./styles/layout.scss";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/userroom" element={<Userroom />} />
-      <Route path="/settings" element={<Settings />} />
-    </Routes>
-  </BrowserRouter>
+  <div className="container">
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<App />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/userroom" element={<Userroom />} />
+        <Route exact path="/settings" element={<Settings />} />
+      </Routes>
+    </BrowserRouter>
+  </div>
 );
 
 // If you want to start measuring performance in your app, pass a function

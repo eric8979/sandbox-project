@@ -1,21 +1,42 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // lib
-import { handleLogin } from "../service/auth";
+import authService from "../service/auth";
+// styles
+import "../styles/layout.scss";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState(0);
+  const navigate = useNavigate();
+  const [userinfo, setUserinfo] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (localStorage.key("user-token")) {
+      navigate("/", { replace: true });
+    }
+  }, [loginSuccess, setLoginSuccess, navigate]);
+
+  const onChange = (e) => {
+    setUserinfo((orgState) => ({
+      ...orgState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handleLogin(email, pwd);
+    const answer = await authService.handleLogin(userinfo);
+    setLoginSuccess(answer);
   };
 
   return (
     <div className="container">
-      <h1>Welcome back to Weather-Chatbot/Messanger!</h1>
-      <h2>Stay connected with weather/friends all the time</h2>
+      <h1>Welcome back!</h1>
+      <h2>Stay connected to weather*stories*friends</h2>
 
       <button>Login with Google</button>
       <button>Login with GitHub</button>
@@ -24,20 +45,20 @@ function Login() {
 
       <form className="authForm" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="email">
-          email:{" "}
           <input
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            type="text"
+            placeholder="email"
+            onChange={(e) => onChange(e)}
+            value={userinfo.email}
+            type="email"
             id="email"
           />
         </label>
         <label htmlFor="password">
-          password:{" "}
           <input
-            onChange={(e) => setPwd(e.target.value)}
-            value={pwd}
-            type="text"
+            placeholder="password"
+            onChange={(e) => onChange(e)}
+            value={userinfo.password}
+            type="password"
             id="password"
           />
         </label>

@@ -8,12 +8,6 @@ import UserBox from "../components/UserBox";
 const Userroom = () => {
   const [users, setUsers] = useState(null);
 
-  useEffect(() => {
-    axios.get("/api/users/all/").then((response) => {
-      setUsers(response.data);
-    });
-  }, []);
-
   if (!users) return null;
 
   return (

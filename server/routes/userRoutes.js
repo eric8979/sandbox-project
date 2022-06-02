@@ -11,7 +11,7 @@ const { authHandler } = require("../middleware/authMiddleware");
 // "/api/users/"
 router.post("/", signupUser);
 router.post("/login", loginUser);
-router.get("/all", getAllusers);
+router.get("/all", authHandler, getAllusers);
 router.get("/self", authHandler, getSelf);
 
 module.exports = router;

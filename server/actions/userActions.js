@@ -8,10 +8,10 @@ const { jwtGenerator } = require("../config/jwt");
 // @route POST /api/users
 // @access Public
 const signupUser = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, country, email, password } = req.body;
   if (!username || !email || !password) {
     res.status(400);
-    throw new Error("Please fill in all fields");
+    throw new Error("Please fill in required fields");
   }
 
   // Check if user already exists
@@ -28,6 +28,7 @@ const signupUser = asyncHandler(async (req, res) => {
   // Create/Build user
   const user = await User.create({
     username,
+    country,
     email,
     password: hashedPassword,
   });
@@ -38,6 +39,7 @@ const signupUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user.id,
       username: user.username,
+      country: user.country,
       email: user.email,
       token: jwtGenerator(user._id),
     });
@@ -58,9 +60,6 @@ const loginUser = asyncHandler(async (req, res) => {
   const validPassword = await bcrypt.compare(password, userInDB.password);
   if (userInDB && validPassword) {
     res.status(200).json({
-      _id: userInDB.id,
-      username: userInDB.username,
-      email: userInDB.email,
       token: jwtGenerator(userInDB._id),
     });
   } else {
@@ -75,7 +74,6 @@ const loginUser = asyncHandler(async (req, res) => {
 const getAllusers = asyncHandler(async (req, res) => {
   const users = await User.find()
     .select("-password")
-    .select("-updatedAt")
     .select("-createdAt")
     .select("-email");
 
