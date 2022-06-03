@@ -2,11 +2,22 @@
 .bottombar {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  font-size: 1.3rem;
+  text-align: center;
+  padding: 10px;
 
   a {
-    font-size: 2rem;
+    width: 45%;
+    height: 90%;
+    text-decoration: none;
+    color: #008b8b;
+  }
+  a:hover {
+    color: #00ced1;
+  }
+  .logo {
+    color: #008080;
   }
 
   * {
@@ -16,7 +27,25 @@
 
 .topbar {
   margin-bottom: 0.5rem;
+  justify-content: space-between;
+  border-bottom: 2px gray solid;
+  a {
+    font-size: 2.9rem;
+    height: 3rem;
+  }
+  .logo {
+    text-align: left;
+  }
+  .settings {
+    text-align: right;
+  }
 }
 .bottombar {
   margin-top: 0.5rem;
+  border-top: 2px gray solid;
+  font-size: 1.5rem;
+  height: 2.8rem;
+  a {
+    box-shadow: 3px 3px 3px 3px gray;
+  }
 }

@@ -7,14 +7,10 @@ import Topbar from "./components/Topbar";
 import ChatroomBox from "./components/ChatroomBox";
 
 function App() {
-  const [chats, setChats] = useState(null);
-
-  useEffect(() => {}, []);
-
   return (
     <div>
       <Topbar />
-      <h1>Chatroom page</h1>
+      <h1>Weather Page (home)</h1>
       <div></div>
 
       <Bottombar />
