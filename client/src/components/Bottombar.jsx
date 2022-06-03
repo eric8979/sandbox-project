@@ -8,13 +8,13 @@ import { SiThunderbird } from "react-icons/si";
 function Bottombar() {
   return (
     <div className="bottombar">
-      <NavLink to="/tell">
+      <NavLink to="/tell" className="bottomBtn">
         <FaKiwiBird />
       </NavLink>
-      <NavLink to="/users">
+      <NavLink to="/users" className="bottomBtn">
         <GiNestBirds />
       </NavLink>
-      <NavLink to="/message">
+      <NavLink to="/message" className="bottomBtn">
         <SiThunderbird />
       </NavLink>
     </div>
