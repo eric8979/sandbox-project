@@ -11,12 +11,13 @@ function Signup() {
   const [userinfo, setUserInfo] = useState({
     username: "",
     country: "",
+    city: "",
     email: "",
     password: "",
   });
 
   useEffect(() => {
-    if (localStorage.key("user-token")) {
+    if (sessionStorage.key("user-token")) {
       navigate("/", { replace: true });
     }
   }, [signupSuccess, setSignupSuccess, navigate]);
@@ -44,6 +45,11 @@ function Signup() {
 
       <br />
 
+      <p>
+        <b>Country Code</b> and <b>City Name</b> is required for Weather
+        service!
+      </p>
+
       <form className="authForm" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="username">
           <input
@@ -61,6 +67,15 @@ function Signup() {
             value={userinfo.country}
             type="text"
             id="country"
+          />
+        </label>
+        <label htmlFor="city">
+          <input
+            placeholder="City Name"
+            onChange={(e) => onChange(e)}
+            value={userinfo.city}
+            type="text"
+            id="city"
           />
         </label>
         <label htmlFor="email">

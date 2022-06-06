@@ -8,10 +8,10 @@ const { jwtGenerator } = require("../config/jwt");
 // @route POST /api/users
 // @access Public
 const signupUser = asyncHandler(async (req, res) => {
-  const { username, country, email, password } = req.body;
-  if (!username || !email || !password) {
+  const { username, country, city, email, password } = req.body;
+  if (!username || !country || !city || !email || !password) {
     res.status(400);
-    throw new Error("Please fill in required fields");
+    throw new Error("Please fill in all fields");
   }
 
   // Check if user already exists
@@ -29,6 +29,7 @@ const signupUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     username,
     country,
+    city,
     email,
     password: hashedPassword,
   });
@@ -40,6 +41,7 @@ const signupUser = asyncHandler(async (req, res) => {
       _id: user.id,
       username: user.username,
       country: user.country,
+      city: user.city,
       email: user.email,
       token: jwtGenerator(user._id),
     });

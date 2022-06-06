@@ -1,16 +1,16 @@
 const axios = require("axios").default;
 
-const handleSignup = async ({ username, country, email, password }) => {
+const handleSignup = async ({ username, country, city, email, password }) => {
   try {
     const response = await axios.post("http://localhost:8080/api/users", {
       username,
       country,
+      city,
       email,
       password,
     });
     if (response.data) {
-      console.log("signup request sent...");
-      localStorage.setItem("user-token", JSON.stringify(response.data));
+      sessionStorage.setItem("user-token", JSON.stringify(response.data));
       return "success";
     }
   } catch (err) {
@@ -25,8 +25,7 @@ const handleLogin = async ({ email, password }) => {
       password,
     });
     if (response.data) {
-      console.log("signin request sent...");
-      localStorage.setItem("user-token", JSON.stringify(response.data));
+      sessionStorage.setItem("user-token", JSON.stringify(response.data));
       return "success";
     }
   } catch (err) {

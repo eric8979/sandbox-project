@@ -15,7 +15,7 @@ function Login() {
   });
 
   useEffect(() => {
-    if (localStorage.key("user-token")) {
+    if (sessionStorage.key("user-token")) {
       navigate("/", { replace: true });
     }
   }, [loginSuccess, setLoginSuccess, navigate]);
@@ -29,6 +29,10 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!userinfo.email || !userinfo.password) {
+      alert("Please fill all boxes");
+      return;
+    }
     const answer = await authService.handleLogin(userinfo);
     setLoginSuccess(answer);
   };
