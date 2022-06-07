@@ -7,7 +7,7 @@ function Tweet() {
     <div>
       <Topbar />
 
-      <div>tweet</div>
+      <div className="mainBox">tweet</div>
 
       <Bottombar />
     </div>

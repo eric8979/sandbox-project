@@ -1,14 +1,29 @@
+html {
+  height: 100vh;
+}
 * {
   margin: 0;
   padding: 0;
-  background-color: #FFDEAD;
+  background-color: #ffdead;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+}
+
+.mainBox {
+  min-height: 82vh;
+  margin-top: 13vh;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 2rem;
+  * {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
 }
 
 .authForm {
@@ -25,12 +40,30 @@
   }
 }
 
+.submitBtn {
+  width: 40%;
+  color: green;
+  border: green 2px solid;
+  border-radius: 4px;
+  input {
+    background-color: green;
+  }
+}
+
+.logoutBtn {
+  width: 20%;
+  border-radius: 4px;
+  background-color: red;
+}
+
 .weather-buttons {
   display: flex;
   flex-direction: row;
   button {
     margin-left: 0.2rem;
     margin-right: 0.2rem;
+    padding: 0.2rem;
+    border-radius: 6px;
   }
 }
 

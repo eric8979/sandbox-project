@@ -36,13 +36,15 @@ function Signup() {
   };
 
   return (
-    <div className="container">
+    <div className="mainBox">
       <h1>Welcome to WeatherAPP/twitter/Messanger!</h1>
       <h2>Stay connected to weather*stories*friends</h2>
 
       <button>Create account with Google</button>
+      <br />
       <button>Create account with GitHub</button>
 
+      <br />
       <br />
 
       <p>
@@ -97,7 +99,7 @@ function Signup() {
           />
         </label>
 
-        <label htmlFor="submit">
+        <label className="submitBtn" htmlFor="submit">
           <input type="submit" id="submit" />
         </label>
       </form>

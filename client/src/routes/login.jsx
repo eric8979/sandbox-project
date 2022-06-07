@@ -38,13 +38,15 @@ function Login() {
   };
 
   return (
-    <div className="container">
+    <div className="mainBox">
       <h1>Welcome back!</h1>
       <h2>Stay connected to weather*stories*friends</h2>
 
       <button>Login with Google</button>
+      <br />
       <button>Login with GitHub</button>
 
+      <br />
       <br />
 
       <form className="authForm" onSubmit={(e) => handleSubmit(e)}>
@@ -66,7 +68,7 @@ function Login() {
             id="password"
           />
         </label>
-        <label htmlFor="submit">
+        <label className="submitBtn" htmlFor="submit">
           <input type="submit" id="submit" />
         </label>
       </form>

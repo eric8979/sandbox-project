@@ -10,6 +10,7 @@ function Topbar() {
       <Link to="/" className="logo">
         <FcHome />
       </Link>
+      <div className="title">🤖 Weather Chatbot</div>
       <Link to="/settings" className="settings">
         <AiFillSetting />
       </Link>
