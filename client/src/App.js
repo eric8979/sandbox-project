@@ -16,6 +16,7 @@ function App() {
     setWeather(null);
     setForecast(null);
     setAir(null);
+    // TODO: settimeout for data fetch from openweather api?
     if (e.target.id === "weather") {
       const weatherData = await weatherService.getWeather(token);
       setWeather(weatherData);
@@ -35,8 +36,8 @@ function App() {
   return (
     <div>
       <Topbar />
-      <h1>Weather Page (home)</h1>
       <div className="weather-buttons">
+        <b>Types : </b>
         <button id="weather" onClick={(e) => handleData(e)}>
           Weather
         </button>
@@ -53,17 +54,63 @@ function App() {
       ) : (
         <div>
           <h2>
-            {weather.meta.city} ({weather.meta.country}) - {weather.description}
+            {weather.meta.city} ({weather.meta.country}){" "}
+            <small>UTC {weather.meta.timezone}</small>
           </h2>
-          <small>Time Zone : UTC {weather.meta.timezone}</small>
+          <h3>* {weather.description} *</h3>
           <p>
-            Temperature : {weather.temp.realCelcius} C / feels like{" "}
+            Temperature : {weather.temp.realCelcius} ℃ / feels like{" "}
             {weather.temp.feelCelcius} C
           </p>
           <p>Wind : {weather.types.wind} m/s</p>
           <p>Cloud : {weather.types.clouds} %</p>
           <p>{weather.rain ? "rain : Yes" : "rain : No"}</p>
           <p>{weather.snow ? "snow : Yes" : "snow : No"}</p>
+        </div>
+      )}
+
+      {!forecast ? (
+        ""
+      ) : (
+        <div>
+          <h2>
+            {forecast.meta.city} ({forecast.meta.country}){" "}
+            <small>UTC {forecast.meta.timezone}</small>
+          </h2>
+
+          {forecast.forecast.map((item, index) => (
+            <div key={index} className="forecastItemBox">
+              <h3>
+                {item.description} <small>{item.dateTime}</small>
+              </h3>
+              <p>
+                Temperature : {item.temp.realCelcius} ℃ / feels like{" "}
+                {item.temp.feelCelcius} ℃
+              </p>
+              <p>Wind : {item.types.wind} m/s</p>
+              <p>Cloud : {item.types.clouds} %</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {!air ? (
+        ""
+      ) : (
+        <div>
+          <h2>
+            {air.meta.country} {air.meta.state ? air.meta.state : ""}
+          </h2>
+          <p>CO : {air.airData.co} μg/m3</p>
+          <p>NH3 : {air.airData.nh3} μg/m3</p>
+          <p>NO : {air.airData.no} μg/m3</p>
+          <p>NO2 : {air.airData.no2} μg/m3</p>
+          <p>O3 : {air.airData.o3} μg/m3</p>
+          <p>SO2 : {air.airData.so2} μg/m3</p>
+          <p>
+            {"pm2.5"} : {air.airData.pm2_5} μg/m3
+          </p>
+          <p>pm10 : {air.airData.pm10} μg/m3</p>
         </div>
       )}
 

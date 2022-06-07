@@ -8,7 +8,7 @@ const {
 
 // "/api/weather/"
 router.post("/", getWeather);
-router.get("/forecast", getForecast);
-router.get("/airpollution", getAirPollution);
+router.post("/forecast", getForecast);
+router.post("/airpollution", getAirPollution);
 
 module.exports = router;
