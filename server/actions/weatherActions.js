@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const axios = require("axios").default;
 const User = require("../models/userModel");
 // handles "exception" inside of async express routes
@@ -8,10 +9,16 @@ const asyncHandler = require("express-async-handler");
 // @route Get /api/weather
 // @access Public
 const getWeather = asyncHandler(async (req, res) => {
-  const countryCode = "US";
-  const city = "los angeles";
-  const limit = 5;
+  const token = req.body.token;
+  const decoded = jwt.decode(token, { complete: true });
+  const user = await User.findById(decoded.payload.id)
+    .select("-password")
+    .select("-email");
 
+  const countryCode = user.country;
+  const city = user.city;
+
+  const limit = 5;
   try {
     const metaGeoData = await axios.get(
       `http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&limit=${limit}&appid=${process.env.OPENWEATHER_API_KEY}`
@@ -40,10 +47,16 @@ const getWeather = asyncHandler(async (req, res) => {
 // @route GET /api/weather/forecast
 // @access Public
 const getForecast = asyncHandler(async (req, res) => {
-  const countryCode = "KR";
-  const city = "seoul";
-  const limit = 5;
+  const token = req.body.token;
+  const decoded = jwt.decode(token, { complete: true });
+  const user = await User.findById(decoded.payload.id)
+    .select("-password")
+    .select("-email");
 
+  const countryCode = user.country;
+  const city = user.city;
+
+  const limit = 5;
   try {
     const metaGeoData = await axios.get(
       `http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&limit=${limit}&appid=${process.env.OPENWEATHER_API_KEY}`
@@ -72,10 +85,16 @@ const getForecast = asyncHandler(async (req, res) => {
 // @route GET /api/weather/airpollution
 // @access Public
 const getAirPollution = asyncHandler(async (req, res) => {
-  const countryCode = "US";
-  const city = "san francisco";
-  const limit = 5;
+  const token = req.body.token;
+  const decoded = jwt.decode(token, { complete: true });
+  const user = await User.findById(decoded.payload.id)
+    .select("-password")
+    .select("-email");
 
+  const countryCode = user.country;
+  const city = user.city;
+
+  const limit = 5;
   try {
     const metaGeoData = await axios.get(
       `http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&limit=${limit}&appid=${process.env.OPENWEATHER_API_KEY}`

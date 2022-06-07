@@ -49,6 +49,8 @@ function App() {
         </button>
       </div>
 
+      <hr></hr>
+
       {!weather ? (
         ""
       ) : (
@@ -59,13 +61,13 @@ function App() {
           </h2>
           <h3>* {weather.description} *</h3>
           <p>
-            Temperature : {weather.temp.realCelcius} ℃ / feels like{" "}
+            🌡 : {weather.temp.realCelcius} ℃ / feels like{" "}
             {weather.temp.feelCelcius} C
           </p>
-          <p>Wind : {weather.types.wind} m/s</p>
-          <p>Cloud : {weather.types.clouds} %</p>
-          <p>{weather.rain ? "rain : Yes" : "rain : No"}</p>
-          <p>{weather.snow ? "snow : Yes" : "snow : No"}</p>
+          <p>🌬 : {weather.types.wind} m/s</p>
+          <p>☁️ : {weather.types.clouds} %</p>
+          <p>{weather.rain ? "☔️ : Yes" : "☔️ : No"}</p>
+          <p>{weather.snow ? "❄️ : Yes" : "❄️ : No"}</p>
         </div>
       )}
 
@@ -99,7 +101,7 @@ function App() {
       ) : (
         <div>
           <h2>
-            {air.meta.country} {air.meta.state ? air.meta.state : ""}
+            {air.meta.state ? air.meta.state : ""} {air.meta.country}
           </h2>
           <p>CO : {air.airData.co} μg/m3</p>
           <p>NH3 : {air.airData.nh3} μg/m3</p>

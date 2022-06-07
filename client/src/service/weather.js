@@ -5,7 +5,10 @@ const getWeather = async (user) => {
     return;
   }
   try {
-    const response = await axios.post("http://localhost:8080/api/weather");
+    const userToken = JSON.parse(sessionStorage.getItem("user-token"));
+    const response = await axios.post("http://localhost:8080/api/weather", {
+      token: userToken.token,
+    });
     const data = response.data;
     const formattedData = {
       meta: {
@@ -40,8 +43,10 @@ const getForecaset = async (user) => {
     return;
   }
   try {
+    const userToken = JSON.parse(sessionStorage.getItem("user-token"));
     const response = await axios.post(
-      "http://localhost:8080/api/weather/forecast"
+      "http://localhost:8080/api/weather/forecast",
+      { token: userToken.token }
     );
     const data = response.data;
 
@@ -85,8 +90,10 @@ const getAirPollution = async (user) => {
     return;
   }
   try {
+    const userToken = JSON.parse(sessionStorage.getItem("user-token"));
     const response = await axios.post(
-      "http://localhost:8080/api/weather/airpollution"
+      "http://localhost:8080/api/weather/airpollution",
+      { token: userToken.token }
     );
     const dataObject = response.data;
     const airData = dataObject.airPollutionData.list[0].components;
