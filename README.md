@@ -2,17 +2,26 @@
 
 ## About the project
 
-Very Simple weather chatbot web-app that show weather information based on longitude and altitude.
+This web-app project contains 3 functionality.
+
+1. Weather Chatbot that doesn't look like a chatting app.
+2. twitter like social network service.
+3. Secure(encrypted) messaging service.
+
 The main goal of this project is not to make something useful but to learn/use as much as possible.
 
-## Getting Started (Installation)
+## Getting Started (How to Visit)
 
-## Usage
+[weather-chatbot URL]()
 
 ## Roadmap
 
+* Front End : React
+* Back End : node.js & expressjs
+* authentication/authorization : JWT
+
 ## License
 
-This web-app uses... MIT License
+This web-app uses MIT License
 
 ## Contact
