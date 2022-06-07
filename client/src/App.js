@@ -56,11 +56,9 @@ function App() {
 
         {!visited && !weather && !forecast && !air ? (
           <h2>Click a button for weather service!</h2>
-        ) : (
-          ""
-        )}
+        ) : null}
 
-        {visited && !weather && !forecast && !air ? <h2>Loading...</h2> : ""}
+        {visited && !weather && !forecast && !air ? <h2>Loading...</h2> : null}
 
         {!weather ? (
           ""
