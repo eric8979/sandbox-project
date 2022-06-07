@@ -106,8 +106,8 @@ function Settings() {
             Logout
           </button>
         </div>
-        <Bottombar />
       </div>
+      <Bottombar />
     </div>
   );
 }
