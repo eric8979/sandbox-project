@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import authService from "../service/auth";
 // components
 import Topbar from "../components/Topbar";
 import Bottombar from "../components/Bottombar";
 
 function Settings() {
+  const token = sessionStorage.getItem("user-token");
   const navigate = useNavigate();
-  const [editSuccess, setEditSuccess] = useState(0);
+  const [logoutSuccess, setLogoutSuccess] = useState(0);
   const [userinfo, setUserinfo] = useState({
     username: "",
     country: "",
@@ -15,13 +16,12 @@ function Settings() {
     email: "",
   });
 
-  // useEffect(() => {
-  //     navigate("/login", { replace: true });
-  // }, [ navigate]);
-
-  const logout = () => {
-    return;
-  };
+  useEffect(() => {
+    if (logoutSuccess === "logout") {
+      sessionStorage.clear();
+      navigate("/login", { replace: true });
+    }
+  }, [logoutSuccess, setLogoutSuccess, navigate]);
 
   const onChange = (e) => {
     setUserinfo((orgState) => ({
@@ -37,8 +37,14 @@ function Settings() {
       return;
     }
     const response = await authService.handleUserEdit(userinfo);
-    setEditSuccess(response);
+    if (response === "success") {
+      alert("User info successfully changed");
+    }
   };
+
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div>
@@ -89,7 +95,8 @@ function Settings() {
       <br />
 
       <div>
-        Want to logout? <button onClick={() => logout()}>Logout</button>
+        Want to logout?{" "}
+        <button onClick={() => setLogoutSuccess("logout")}>Logout</button>
       </div>
       <Bottombar />
     </div>
