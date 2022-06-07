@@ -93,27 +93,9 @@ const getSelf = asyncHandler(async (req, res) => {
 // @route PUT /api/users/edit
 // @access Private
 const editUser = asyncHandler(async (req, res) => {
-  const { username, country, city, email } = req.body;
-  const change = {};
-  if (username.length) {
-    change["username"] = username;
-  }
-  if (country.length) {
-    change["country"] = country;
-  }
-  if (city.length) {
-    change["city"] = city;
-  }
-  if (email.length) {
-    change["email"] = email;
-  }
-  try {
-    await User.findByIdAndUpdate(req.user._id, change);
-    res.send();
-  } catch (err) {
-    res.status(400);
-    throw new Error("Something went wrong from mongoDB");
-  }
+  const {username, country, city, email} = req.body;
+  console.log(username);
+  res.json({});
 });
 
 module.exports = {

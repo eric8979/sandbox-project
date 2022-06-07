@@ -33,9 +33,38 @@ const handleLogin = async ({ email, password }) => {
   }
 };
 
+const handleUserEdit = async ({ username, country, city, email }) => {
+  const token = JSON.parse(sessionStorage.getItem("user-token")).token;
+  try {
+    const response = await axios.put(
+      "http://localhost:8080/api/users/edit",
+      {
+        username,
+        country: country.toUpperCase(),
+        city: city.toLowerCase(),
+        email,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (response.status === 200) {
+      return "success";
+    } else {
+      return "fail";
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const authService = {
   handleSignup,
   handleLogin,
+  handleUserEdit,
 };
 
 export default authService;

@@ -1,5 +1,17 @@
+// components
+import Topbar from "../components/Topbar";
+import Bottombar from "../components/Bottombar";
+
 function Tweet() {
-  return <div>Tweet</div>;
+  return (
+    <div>
+      <Topbar />
+
+      <div>tweet</div>
+
+      <Bottombar />
+    </div>
+  );
 }
 
 export default Tweet;
