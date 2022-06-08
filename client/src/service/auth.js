@@ -61,10 +61,22 @@ const handleUserEdit = async ({ username, country, city, email }) => {
   }
 };
 
+const handleGetUser = async (userId) => {
+  try {
+    const response = await axios.post("http://localhost:8080/api/users/self", {
+      userId,
+    });
+    return response.data.username;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const authService = {
   handleSignup,
   handleLogin,
   handleUserEdit,
+  handleGetUser,
 };
 
 export default authService;
