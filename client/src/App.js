@@ -1,5 +1,5 @@
 // Weather broadcasting page
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import weatherService from "./service/weather";
 // components
@@ -40,7 +40,6 @@ function App() {
       <Topbar />
       <div className="mainBox">
         <div className="weather-buttons">
-          <b>Types {"-> "} </b>
           <button id="weather" onClick={(e) => handleData(e)}>
             Weather
           </button>

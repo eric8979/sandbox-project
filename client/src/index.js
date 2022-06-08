@@ -8,7 +8,7 @@ import Signup from "./routes/signup";
 import Login from "./routes/login";
 import Users from "./routes/users";
 import Settings from "./routes/settings";
-import Tweet from "./routes/tweet";
+import Tweets from "./routes/tweets";
 import NotFound from "./routes/notfound";
 // styles
 import "./styles/layout.scss";
@@ -24,7 +24,7 @@ root.render(
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/users" element={<Users />} />
         <Route exact path="/settings" element={<Settings />} />
-        <Route exact path="/tell" element={<Tweet />} />
+        <Route exact path="/tweets" element={<Tweets />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

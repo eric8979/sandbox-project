@@ -56,7 +56,7 @@ function Settings() {
         <form className="authForm" onSubmit={(e) => handleSubmit(e)}>
           <label htmlFor="username">
             <input
-              placeholder="username"
+              placeholder="Username"
               onChange={(e) => onChange(e)}
               value={userinfo.username}
               type="text"
@@ -65,7 +65,7 @@ function Settings() {
           </label>
           <label htmlFor="country">
             <input
-              placeholder="Please use Alpha-2 Country Code"
+              placeholder="Alpha-2 Country Code"
               onChange={(e) => onChange(e)}
               value={userinfo.country.toUpperCase()}
               type="text"
@@ -74,7 +74,7 @@ function Settings() {
           </label>
           <label htmlFor="city">
             <input
-              placeholder="City Name (lower case)"
+              placeholder="City Name"
               onChange={(e) => onChange(e)}
               value={userinfo.city.toLowerCase()}
               type="text"
@@ -83,7 +83,7 @@ function Settings() {
           </label>
           <label htmlFor="email">
             <input
-              placeholder="Change email"
+              placeholder="email"
               onChange={(e) => onChange(e)}
               value={userinfo.email}
               type="email"
