@@ -1,15 +1,15 @@
-.userBox,
-.chatBox {
-  margin: 0.3rem 1rem;
+.usersBox {
+  margin-top: 10vh;
+}
+.userBox {
+  margin: 1rem;
   border: 0.2rem black solid;
   border-radius: 10px;
-}
-
-.userBox {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  font-size: 1.4rem;
 
   * {
     padding: 0.3rem 0.5rem;

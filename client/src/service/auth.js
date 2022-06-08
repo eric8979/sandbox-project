@@ -72,11 +72,21 @@ const handleGetUser = async (userId) => {
   }
 };
 
+const handleGetAllUser = async () => {
+  try {
+    const response = await axios.get("http://localhost:8080/api/users/all");
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const authService = {
   handleSignup,
   handleLogin,
   handleUserEdit,
   handleGetUser,
+  handleGetAllUser,
 };
 
 export default authService;
