@@ -74,19 +74,23 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route GET /api/users/all
 // @access Public
 const getAllusers = asyncHandler(async (req, res) => {
-  const users = await User.find()
-    .select("-password")
-    .select("-createdAt")
-    .select("-email");
+  const users = await User.find().select("-password");
 
-  res.status(200).json(users);
+  res.status(200).send(users);
 });
 
-// @desc Get user
-// @route GET /api/users/self
-// @access Private
+// @desc Get self user info
+// @route POST /api/users/self
+// @access Public
 const getSelf = asyncHandler(async (req, res) => {
-  res.status(200).json(req.user);
+  const { userId } = req.body;
+  try {
+    const user = await User.findById(userId);
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400);
+    throw new Error("Get self error");
+  }
 });
 
 // @desc Edit user

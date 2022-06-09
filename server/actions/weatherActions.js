@@ -97,5 +97,3 @@ module.exports = {
   getForecast,
   getAirPollution,
 };
-
-// use geocoding
